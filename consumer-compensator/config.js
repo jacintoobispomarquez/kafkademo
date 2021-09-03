@@ -30,6 +30,7 @@ const requiredOpts = [
   ['password', '--password PASSWORD', 'The database password'],
   ['host', '--host HOST', 'The database host'],
   ['database', '--database DATABASE', 'The database name'],
+  ['table', '--table TABLE', 'The table name'],
   ['port', '--port PORT', 'The database port'],
 ];
 
@@ -47,6 +48,7 @@ const alias = {
   W: 'password',
   h: 'host',
   d: 'database',
+  b: 'table',
   p: 'port'
 };
 

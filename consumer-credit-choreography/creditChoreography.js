@@ -1,18 +1,18 @@
 const { Kafka } = require('kafkajs');
 
-exports.creditChoreography = function(key, value) {
+exports.creditChoreography = function(key, value, config) {
 
     const creditData = JSON.parse(value);
     const clientData = creditData.client;
     const operationData = creditData.operation;
-    produce(operationData.transactionID, clientData, 'clients');
-    produce(operationData.transactionID, operationData, 'operations');
+    produce(operationData.transactionID, clientData, 'clients', config);
+    produce(operationData.transactionID, operationData, 'operations', config);
     
     return true;
 }
 
-function produce(transaction, data, topic) {
-    const kafka = clientConfig();
+function produce(transaction, data, topic, config) {
+    const kafka = clientConfig(config);
     const producer = kafka.producer()
 
     const produce = async () => {
@@ -36,20 +36,18 @@ function produce(transaction, data, topic) {
     const kafkaproducer = produce();
 }
 
-function clientConfig(){
+function clientConfig(config){
     const clientId = "credit-client";
-    const brokers = ["pkc-ep9mm.us-east-2.aws.confluent.cloud:9092"];
-    const username = 'F76HZLUAMHUAAIAP';
-    const password = '20JEhhuCZJmFyayLRAYbNzaTt6YJVxsb6nGZi6wmD4HxZJ96UZQIA64EDWlWN4XB';
 
+    console.log(`Brokers ${config['bootstrap.servers']}`);
     return new Kafka({
       clientId: clientId,
-      brokers: brokers,
+      brokers: [config['bootstrap.servers']],
       ssl: true,
       sasl: {
-        mechanism: 'plain', 
-        username: username,
-        password: password
+        mechanism: config['sasl.mechanisms'], 
+        username: config['sasl.username'],
+        password: config['sasl.password']
       }
     })
   }

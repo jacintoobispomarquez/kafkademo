@@ -1,6 +1,6 @@
 const Kafka = require('node-rdkafka');
 const { configFromCli } = require('./config');
-const { createClient } = require('./createClient');
+const { compensate } = require('./compensate');
 
 function createConsumer(config, onData) {
   const consumer = new Kafka.KafkaConsumer({
@@ -35,8 +35,8 @@ async function consumerExample() {
   let seen = 0;
 
   const consumer = await createConsumer(config, ({key, value, partition, offset}, ) => {
-    const createClientRecord = createClient(key, value, config);
-    console.log(`Processed record ${key} with result ${createClientRecord} in partition ${partition} @ offset ${offset}.`);
+    const compensateRecord = compensate(key, config);
+    console.log(`Processed record ${key} with result ${compensateRecord} in partition ${partition} @ offset ${offset}.`);
   });
 
   consumer.subscribe([config.topic]);

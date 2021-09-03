@@ -16,7 +16,7 @@ exports.createClient = function(transaction, value, config){
     const idName = 'rut';
     const data = JSON.parse(value);
 
-    const existClient = pool.query("SELECT * FROM " + tableName + " where " + idName + " = '" + data.rut + "'").then(results => {
+    const existClient = pool.query(`SELECT * FROM ${tableName} where ${idName} = '${data.rut}'`).then(results => {
         if(results.rowCount == 0){
             const done = insertClient(data, transaction);
         }

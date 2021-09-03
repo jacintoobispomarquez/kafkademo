@@ -35,7 +35,7 @@ async function consumerExample() {
   let seen = 0;
 
   const consumer = await createConsumer(config, ({key, value, partition, offset}, ) => {
-    const choreography = creditChoreography(key, value);
+    const choreography = creditChoreography(key, value, config);
     console.log(`Processed record ${key} with result ${choreography} in partition ${partition} @ offset ${offset}.`);
   });
 
