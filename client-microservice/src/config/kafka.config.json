@@ -1,0 +1,9 @@
+{
+    "bootstrap.servers": "pkc-ep9mm.us-east-2.aws.confluent.cloud:9092",
+    "security.protocol": "SASL_SSL",
+    "mechanisms": "PLAIN",
+    "username": "F76HZLUAMHUAAIAP",
+    "password": "20JEhhuCZJmFyayLRAYbNzaTt6YJVxsb6nGZi6wmD4HxZJ96UZQIA64EDWlWN4XB",
+    "topic": "test1"
+    
+}

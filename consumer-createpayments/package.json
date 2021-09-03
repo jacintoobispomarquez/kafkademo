@@ -1,0 +1,14 @@
+{
+  "name": "confluent-examples-nodejs",
+  "private": true,
+  "version": "6.2.0",
+  "engines": {
+    "node": ">=8.6"
+  },
+  "dependencies": {
+    "kafkajs": "^1.15.0",
+    "minimist": "^1.2.3",
+    "node-rdkafka": "^2.11.0",
+    "pg": "^8.7.1"
+  }
+}
