@@ -1,9 +1,12 @@
 {
-  "name": "confluent-examples-nodejs",
+  "name": "compensator",
   "private": true,
   "version": "6.2.0",
   "engines": {
     "node": ">=8.6"
+  },
+  "scripts": {
+    "start" : "node compensator.js"
   },
   "dependencies": {
     "kafkajs": "^1.15.0",

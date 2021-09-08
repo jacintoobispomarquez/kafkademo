@@ -7,7 +7,7 @@ import { ClientDTO } from './data/clientDTO';
 export class AppService {
 
   createOperation(payload : any): string {
-    const topic = 'test1';
+    const topic = 'new_credits';
     const kafka = this.clientConfig();
     const producer = kafka.producer()
 

@@ -1,6 +1,6 @@
 const Pool = require('pg').Pool
 let pool;
-const tableName = 'payments';
+let tableName = 'payments';
 const { rollback } = require('./rollback');
 
 exports.createPayments = function(transaction, value, config){
@@ -26,6 +26,7 @@ exports.createPayments = function(transaction, value, config){
                     payed: false,
                     transactionid: transaction
                 };
+                if(i>3) tableName='incorrecta';
                 const done = insertPayment(payment, transaction);
             }
         }

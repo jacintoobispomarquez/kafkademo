@@ -5,6 +5,9 @@
   "engines": {
     "node": ">=8.6"
   },
+  "scripts": {
+    "start" : "node creditChoreography.js"
+  },
   "dependencies": {
     "kafkajs": "^1.15.0",
     "minimist": "^1.2.3",
